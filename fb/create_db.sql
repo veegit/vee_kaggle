@@ -3,13 +3,6 @@ CREATE DATABASE IF NOT EXISTS `kaggle_fb` /*!40100 DEFAULT CHARACTER SET latin1 
 USE `kaggle_fb`;
 
 
--- Dumping structure for table kaggle_fb.mv_count_tags
-CREATE TABLE IF NOT EXISTS `mv_count_tags` (
-  `name` char(255) NOT NULL,
-  `count` int(10) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 -- Dumping structure for table kaggle_fb.tags
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -47,4 +40,29 @@ CREATE TABLE IF NOT EXISTS `train_tag_mapping` (
   UNIQUE KEY `train_id_tag_id` (`train_id`,`tag_id`),
   KEY `tag_id` (`tag_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+-- Dumping structure for table kaggle_fb.mv_count_tags
+CREATE TABLE IF NOT EXISTS `mv_count_tags` (
+  `name` char(255) NOT NULL,
+  `count` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- Dumping structure for table kaggle_fb.mv_count_tags
+CREATE TABLE `mv_x2_count_tags` (
+	`id1` INT(11) NOT NULL,
+	`id2` INT(11) NOT NULL,
+	`count` INT(10) UNSIGNED NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id1`, `id2`),
+	INDEX `id1` (`id1`),
+	INDEX `id2` (`id2`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=MyISAM;
+
+
+-- Load data
+TRUNCATE TABLE `kaggle_fb`.`train`;
+LOAD DATA LOCAL INFILE '/home/vee/workspace/data/Train.csv' INTO TABLE `kaggle_fb`.`train` FIELDS TERMINATED BY ',' ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\r\n' (`id`, `title`, `body`, `tags`);
 
