@@ -1,0 +1,13 @@
+1. We can use <code> .. </code> blocks to identify the language
+	1.1. XML tags within code blocks use &lt; &gt;, make sure you are able to parse through that
+2. Use NER to identify named entities
+3. Use POS taggers to identify Nouns, verbs
+4. PreProcess by stemming the title and body words, lowercasing
+5. Phrases can be important too (separated by space or -)
+	5.1 apple script is tagged as applescript or apple-script
+	5.2 apple-script is tagged as applescript or apple-script
+6. How to avoid names at the end
+	6.1 Cheers, \n Vee
+	6.2 Thanks, \n Blah
+	6.3 Regards, \n Bloo
+7. Title and Body should have weights on the terms
