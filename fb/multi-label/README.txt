@@ -1,0 +1,2 @@
+mvn install:install-file -DlocalRepositoryPath=lib/ -DcreateChecksum=true -Dpackaging=jar -Dfile=lib/mulan.jar -DgroupId=net.sourceforge -DartifactId=mulan -Dversion=1.0
+mvn install:install-file -DlocalRepositoryPath=lib/ -DcreateChecksum=true -Dpackaging=jar -Dfile=lib/mulan-src.jar -DgroupId=net.sourceforge -DartifactId=mulan-src -Dversion=1.0
