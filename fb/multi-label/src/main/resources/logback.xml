@@ -3,7 +3,7 @@
 		<encoder>
 			<pattern>%-5level %logger{32}: %msg%n</pattern>
 		</encoder>
-		<target>System.err</target>
+		<target>System.out</target>
 	</appender>
 
 	<logger name="org.hibernate" level="INFO">

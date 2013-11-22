@@ -25,8 +25,8 @@ import org.hibernate.service.ServiceRegistryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.vee.multilabel.entity.New_Train;
 import com.vee.multilabel.entity.Tag;
+import com.vee.multilabel.entity.Train;
 
 public class IndexDemo {
 
@@ -68,7 +68,7 @@ public class IndexDemo {
 				.getFullTextSession(hibernateSession);
 		SimpleIndexingProgressMonitor monitor = new SimpleIndexingProgressMonitor(1000);
 		fullTestSession
-			.createIndexer(New_Train.class)
+			.createIndexer(Train.class)
 			.batchSizeToLoadObjects( 25 )
 			.threadsToLoadObjects( 5 )
 			.idFetchSize( 150 )

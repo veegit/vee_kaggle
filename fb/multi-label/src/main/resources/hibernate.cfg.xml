@@ -7,7 +7,7 @@
 	<session-factory>
 		<!-- Database connection settings -->
 
-		<property name="connection.url">jdbc:mysql://localhost:3306/kaggle_fb</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/kaggle_fb_t1</property>
 		<property name="connection.username">root</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -37,8 +37,7 @@
 
 		<!-- Define Hibernate entity mappings. Standard Hibernate stuff - not specific 
 			to Hibernate Search. -->
-		<!-- <mapping class="com.vee.multilabel.entity.Tag" /> -->
-		<mapping class="com.vee.multilabel.entity.New_Train" />
-		<!-- <mapping class="com.vee.multilabel.entity.Train" /> -->
+		<mapping class="com.vee.multilabel.entity.Tag" />
+		<mapping class="com.vee.multilabel.entity.Train" />
 	</session-factory>
 </hibernate-configuration>

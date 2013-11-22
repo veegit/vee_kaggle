@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `mv_count_tags` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- Dumping structure for table kaggle_fb.mv_count_tags
-CREATE TABLE `mv_x2_count_tags` (
+CREATE TABLE IF NOT EXISTS `mv_x2_count_tags` (
 	`id1` INT(11) NOT NULL,
 	`id2` INT(11) NOT NULL,
 	`count` INT(10) UNSIGNED NOT NULL DEFAULT '0',
@@ -65,4 +65,4 @@ ENGINE=MyISAM;
 -- Load data
 TRUNCATE TABLE `kaggle_fb`.`train`;
 LOAD DATA LOCAL INFILE '/home/vee/workspace/data/Train.csv' INTO TABLE `kaggle_fb`.`train` FIELDS TERMINATED BY ',' ENCLOSED BY '"' ESCAPED BY '"' LINES TERMINATED BY '\r\n' (`id`, `title`, `body`, `tags`);
-
+UPDATE train set `rand`=rand()*100;
