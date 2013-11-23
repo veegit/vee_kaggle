@@ -12,6 +12,8 @@ import org.hibernate.search.FullTextSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.vee.multilabel.lucene.LuceneUtils;
+
 /**
  * @author
  *
@@ -23,7 +25,11 @@ public class Querier {
 	public static final String SEARCH_FIELD = "body";
 
 	public static void main(String[] args) {
-
+		try {
+			new Querier().sampleQuery(LuceneUtils.getSession());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	void sampleQuery(FullTextSession fullTextSession) throws ParseException {

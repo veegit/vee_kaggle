@@ -24,7 +24,7 @@ def extract():
 
 def load(sorted_tags,load_in_db):
 	i = 1;
-	myfile = open("tags.txt","w")
+	myfile = open("tags.tmp","w")
 	tag=""
 	s=""
 	cursor.execute("truncate table tags")
