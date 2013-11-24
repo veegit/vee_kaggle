@@ -43,8 +43,12 @@ public class LuceneUtils {
 
 	public static void closeSession() {
 		if(fullTextSession != null) {
-			hibernateSession.close();
-			hibernateSessionFactory.close();
+			if(hibernateSession.isOpen()) {
+				hibernateSession.close();
+			}
+			if(!hibernateSessionFactory.isClosed()) {
+				hibernateSessionFactory.close();
+			}
 		}
 	}
 

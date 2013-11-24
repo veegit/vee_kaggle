@@ -1,9 +1,15 @@
 package com.vee.multilabel.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.apache.solr.analysis.LowerCaseFilterFactory;
@@ -51,6 +57,10 @@ public class Train {
 	@Type(type="text")
 	private String body;
 
+	@ManyToMany
+	@JoinTable(name = "train_tag_mapping", joinColumns = @JoinColumn(name = "train_id"), inverseJoinColumns = @JoinColumn(name = "tag_id"))
+	private List<Tag> tagList = new ArrayList<Tag>();
+
 	public Train() { 	}
 
 	public void setId(Integer id) {
@@ -65,6 +75,10 @@ public class Train {
 		this.body = body;
 	}
 
+	public void setTagList(List<Tag> tagList) {
+		this.tagList = tagList;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -77,5 +91,9 @@ public class Train {
 	@Field
 	public String getBody() {
 		return body;
+	}
+
+	public List<Tag> getTagList() {
+		return tagList;
 	}
 }

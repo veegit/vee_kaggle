@@ -17,10 +17,10 @@ public class Indexer {
 
 	public static void main(String args[]) {
 		Indexer indexer = new Indexer();
-		Querier querier = new Querier();
 		try {
+			Querier querier = new Querier(indexer.getFullTextSession());
 			indexer.index(false);
-			querier.sampleQuery(indexer.getFullTextSession());
+			querier.databaseQuery();
 			LuceneUtils.closeSession();
 		} catch (Exception e) {
 			e.printStackTrace();

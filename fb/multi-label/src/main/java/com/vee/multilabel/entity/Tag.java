@@ -1,9 +1,13 @@
 package com.vee.multilabel.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.apache.solr.analysis.LowerCaseFilterFactory;
@@ -42,18 +46,17 @@ public class Tag {
 	@Id
 	@GeneratedValue
 	@DocumentId
-	private Long id;
+	private Integer id;
 
 	@Column
 	private String name;
 
+	@ManyToMany(mappedBy = "tagList")
+	private List<Train> trainList = new ArrayList<Train>();
+
 	public Tag() { 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -61,8 +64,20 @@ public class Tag {
 		this.name = name;
 	}
 
+	public void setTrainList(List<Train> trainList) {
+		this.trainList = trainList;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
 	@Field(store = Store.YES)
 	public String getName() {
 		return name;
+	}
+
+	public List<Train> getTrainList() {
+		return trainList;
 	}
 }
